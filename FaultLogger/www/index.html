@@ -40,9 +40,9 @@
     <!-- Description of Web Page -->
     <meta name="description" content="Community mapping app">
     <!-- Keywords important for Google -->
-    <meta name="keywords" content="html, css, JavaScript, Pretoria, Mamelodi, Alaska, Community, Mapping, GIS, open source">
+    <meta name="keywords" content="html, css, JavaScript, Pretoria, Fault, Tshwane, Community, Mapping, GIS, open source">
     <!-- Author information -->
-    <meta name="author" content="Group 3 Winter School 2017: Adrián Castelló, Sam Chamberlain, Aneeqa Abrar, Raphael Witt, Amy Wootton">
+    <meta name="author" content="Amy Wootton">
 
 
     <!-- CSS Files -->
@@ -64,10 +64,13 @@
 
     	<div id="mySidenav" class="sidenav">
     	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    	  <a onclick="goHome()">Home</a>
+    	  <a onclick="goHome()">Log a new issue</a>
+          <a onclick="goLogged()">My logged issues</a>
+          <a onclick="goWatch()">Watch lists</a>
     	  <a onclick="goAbout()">About</a>
     	  <a onclick="goHelp()">Help</a>
     	  <a onclick="goContact()">Contact</a>
+          <a onclick="">Signout</a>
     	</div>
     </section>
     <!-- **************************************** START SECTION ******************************* -->
@@ -122,16 +125,36 @@
     </form>
     </section>
 
-    <!-- **************************************** MAP SECTION ******************************* -->
+    <!-- **************************************** FAULT SECTION ******************************* -->
+    <section id="fault_section" style="display: none">
+      <div id="faultid"></div>
+      <h1> Log your fault </h1><br>
+      <h3>  Click on the fault you would like to log </h3><br>
+      <button type="button" id="capture_general" class="capture_general"  value="General" onclick="select_Gfault()"><img src="img/General.png" alt="capture icon"><figcaption>General</figcaption></button>
+      <button type="button" id="capture_traffic" class="capture_traffic"  value="Traffic Robot" onclick="select_Rfault()"><img src="img/Traffic.png" alt="capture icon"><figcaption>Robots</figcaption></button>
+      <button type="button" id="capture_signage" class="capture_signage"  value="Signage" onclick="select_Sfault()"><img src="img/Signage.png" alt="capture icon"><figcaption>Signage</figcaption></button><br>
+      <p> Other faults: </p>
+      <button type="button" id="capture_pothole" class="capture_pothole"  value="Pothole" onclick="select_Pfault()"><img src="img/Pothole.png" alt="capture icon"><figcaption>Pothole</figcaption></button>
+      <button type="button" id="capture_manhole" class="capture_manhole"  value="Manhole" onclick="select_Mfault()"><img src="img/Manhole.png" alt="capture icon"><figcaption>Manhole</figcaption></button>
+            <button type="button" id="capture_rails" class="capture_rails"  value="Rails" onclick="select_GRfault()"><img src="img/Rails.png" alt="capture icon"><figcaption>Rails</figcaption></button><br>
+            
+      <button type="button" id="capture_markings" class="capture_markings"  value="Road Markings" onclick="select_RMfault()"><img src="img/Markings.png" alt="capture icon"><figcaption>Road<br>Marking</figcaption></button>
+      <button type="button" id="capture_names" class="capture_names"  value="Street Names" onclick="select_SNfault()"><img src="img/Names.ico" alt="capture icon"><figcaption>Street<br>Names</figcaption></button>
+      <button type="button" id="capture_weeds" class="capture_weeds"  value="Weeds/Grass" onclick="select_Wfault()"><img src="img/Weeds.png" alt="capture icon"><figcaption>Weeds/<br>Grass</figcaption></button><br>
+      <button type="button" id="capture_pavements" class="capture_pavements"  value="Pavements" onclick="select_Pavfault()"><img src="img/Pavements.png" alt="capture icon"><figcaption>Pavements</figcaption></button>
+      <button type="button" id="capture_storm" class="capture_storm"  value="Stormwater Drainage" onclick="select_SDfault()"><img src="img/Storm.png" alt="capture icon"><figcaption>Stormwater Drainage</figcaption></button><br>
+      
+      
+
+    </section>
+    
+    <!-- **************************************** MAP HOME SECTION ******************************* -->
     <section id="map_section" style="display: none">
 
 
       <div id="mapid"></div>
-      <button type="button" id="capture_point" class="capture_point"  onclick="select_location()"><img src="img/capture.svg" alt="capture icon"></button>
+      <!-- <button type="button" id="capture_point" class="capture_point"  onclick="select_location()"><img src="img/capture.svg" alt="capture icon"></button> -->
     </section>
-
-
-
 
 
     <!-- **************************************** CAPTURING SECTION ******************************* -->
@@ -140,34 +163,29 @@
         <input type="hidden" name="name_form" id="name_form" value="register_form" />
           <div class="left" >
           <!-- Type of element (datalist) -->
-          <p for="type" class="label">Type:</p></br>
-          <p for="OtherLabel" id="OtherLabel" class="label" style="display: none;">Other:</p></br>
-          <!-- Date of registration (text) it will be automatically filled, that's why it has the attribute 'disabled', so the user cannot modify it -->
+          <p for="fault" class="label">Type of fault:</p><br>
+          <p for="type" class="label">Type of issue:</p></br>
           <p for="date" class="label date">Date:</p></br>
-          <!-- Time of registration (text) it will be automatically filled, that's why it has the attribute 'disabled', so the user cannot modify it -->
           <p for="time" class="label">Time:</p></br>
-          <!-- Username (text) it will be automatically filled, that's why it has the attribute 'disabled', so the user cannot modify it -->
           <p for="username" class="label">Username:</p>
         </div>
 
         <div class="right">
-
+          <input type="text" name="faulttype" id="faulttype" disabled></br>
           <select name="Types" id="typeelement" onchange="yesnoCheck(this);">
             <option value="" selected disabled>Please select</option>
-            <option value="Taxi Rank">Taxi Rank</option>
-            <option value="Hair Salon">Hair Salon</option>
-            <option value="Tavern">Tavern</option>
-            <option value="Tap">Tap</option>
-            <option value="Tuck Shop">Tuck Shop</option>
-            <option value="Other">Other</option>
+            <option value="Broken">Broken</option>
+            <option value="Missing">Missing</option>
+            <option value="Maintenance">Maintenance</option>
+            <option value="New">New</option>
           </select>
-          <input type="text" name="other" id="other" placeholder="What's missing?" style="display: none;" >
+
 
           <input type="text" name="date" id="date" placeholder="31/07/2017" disabled></br>
 
           <input type="text" name="time" id="time" placeholder="08:34" disabled></br>
 
-          <input type="text" name="username" id="usernamecapture" maxlength="50" placeholder="SamCham1" disabled></br>
+          <input type="text" name="username" id="usernamecapture" maxlength="50" placeholder="Amy" disabled></br>
         </div></br>
 
         <!-- Description (textarea) -->
@@ -180,7 +198,22 @@
         <img id = "myImage" class="myImage"></img>
       </form>
     </section>
-
+    <!-- ***************************************************** LOGGED SECTION *********************************************** -->
+    <section id="logged_section" style="display: none">
+    <h1> Welcome to the logged issues section! </h1>
+    </section>
+    
+    <!-- ***************************************************** DETAIL SECTION *********************************************** -->
+    <section id="detail_section" style="display: none">
+    <h1> Welcome to the detailed logged issues section! </h1>
+    <a onclick="goDetail()">Detail</a>
+    </section>
+    
+    <!-- ***************************************************** WATCHLIST SECTION *********************************************** -->
+    <section id="watchlist_section" style="display: none">
+    <h1> Welcome to the watch list section! </h1>
+    </section>
+    
     <!-- ***************************************************** ABOUT SECTION *********************************************** -->
     <section id="about_section" style="display: none">
 
@@ -188,64 +221,20 @@
       <h1 id="backtotop">About</h1>
       <!--Adding container DIV for links to headings-->
 
-
-      <!--Creating headings-->
-      <h3 id='developers'>The Developers</h3>
-      <!--Add text below-->
-
-      <p>
-      The following students of the University of Pretoria and the Hochschule Karlsruhe - University of Applied Sciences were involved in this project. <br>
-      </p>
-
-
-      <div class='photos'>
-
-      <figure id = 'Adrian'>
-      	<img src="img\Adrian.jpg" alt="Adrian" style="width: 250px;height:auto;">
-      	<figcaption>Adrian Castello (HsKA)</figcaption>
-      </figure>
-
-      <figure id = 'Sam'>
-      	<img img src="img\Sam1.jpg" alt="Adrian" style="width:250px;height:auto;">
-      	<figcaption>Sam Chamberlain (UP)</figcaption>
-      </figure>
-
-      <figure id = 'Aneeqa'>
-      	<img id = 'Aneeqa' img src="img\Aneeqa1.jpg" alt="Aneeqa" style="width:250px;height:auto;">
-      	<figcaption>Aneeqa Abrar (HsKA)</figcaption>
-      </figure>
-
-      <figure id = 'Aneeqa'>
-      	<img id = 'Raphael' img src="img\Raph.jpg" alt="Raph" style="width:250px;height:auto;">
-      	<figcaption>Raphael Witt (HsKA)</figcaption>
-      </figure>
-
-        <figure id = 'Amy'>
-      	<img id = 'Amy' img src="img\Amy1.jpg" alt="Amy" style="width:250px;height:auto;">
-      	<figcaption>Amy Wootton (UP)</figcaption>
-      </figure>
-      </div>
-
       <h3 id='app'>SAHARA: The Application</h3>
       <!--Add text below-->
       <p>
       Topic:<br>
-      Mapping and visualising social gathering nodes within the informal settlement of Alaska, Mamelodi.<br>
+      Mapping and visualising fault nodes within the Municipality of Tshwane, Gauteng.<br>
       <br>
       Aim:<br>
-      To allow for the capture and visualisation of social gathering nodes within Alaska, Mamelodi.
+      To allow for the capture and visualisation of fault nodes by registered users.
       </p>
 
       <h3 id='winterschool'>2017 Winter School held in Pretoria, South Africa</h3>
       <!--Add text below-->
       <p>
-      The 2017 Winter Schoool project was funded by the Baden-Württemberg Stiftung within its framework Baden-Württemberg-STIPENDIUM for University students. <br>
-      BWS plus aims to bring students from the technology and innovation region, Baden-Württemberg, together with students from South Africa so that they can benefit <br>
-      from experience and knowledge regarding real-time geomatics at the two institutions. Today, geospatial tools facilitate incorporating geodata when making decisions <br>
-      to the extent that the use of geospatial tools has become natural to many. At the same time, ubiquitous use of smartphones and the Internet prompts participation. <br>
-      <br>
-      The goal of the project is to explore the differences and similarities in relevance and acceptance of citizen participation considering geodata in Europe and in Africa, <br>
-      and to start a long-term partnership and student exchange programme. <br>
+      text <br>
       </p>
 
       <a href="#backtotop">Back to top</a><br>
@@ -276,7 +265,7 @@
       <a href="#register">Register</a><br>
       <a href="#login">Login</a><br>
       <a href="#capturing">Data Capturing</a><br>
-      <a href="#historic">Historic Functionality</a><br>
+      <a href="#watch">Watch List Functionality</a><br>
       <a href="#location">Location</a><br>
       </div>
       <br>
@@ -304,12 +293,11 @@
 
       </p>
 
-      <h3 id='historic'>Historic Function</h3>
+      <h3 id='watch'>Watch list Function</h3>
       <!--Add text below-->
       <p>
-      This function allows for the historic visualisation of the captured data. <br>
-      Simply change the date via the drop down box in order to visualise how the captured <br>
-      data has shifted and changed over the years.
+      This function allows for the user to create a watch list for areas. <br>
+      Simply change add the area you wish to keep an eye on... <br>
       </p>
 
       <h3 id='location'>Location</h3>

@@ -235,8 +235,153 @@ function log_in() {
     document.getElementById('start_section').style.display='none';
     document.getElementById('navbar_section').style.display='block';
     document.getElementById('map_section').style.display='block';
+    document.getElementById('fault_section').style.display='none';
+    document.getElementById('detail_section').style.display='none';
   }
   map._onResize();
+}
+
+function select_Gfault() {
+    if (map.hasLayer()) {
+    map.removeLayer(marker); }
+    x=0;
+    fault= 'General';
+    document.getElementById('start_section').style.display='none';
+    document.getElementById('navbar_section').style.display='block';
+    document.getElementById('map_section').style.display='block';
+    document.getElementById('fault_section').style.display='none';
+    document.getElementById('detail_section').style.display='none';
+    select_location();   
+}
+
+function select_Rfault() {
+    if (map.hasLayer()) {
+    map.removeLayer(marker); }
+    x=0;
+    fault= 'Traffic Robot';
+    document.getElementById('start_section').style.display='none';
+    document.getElementById('navbar_section').style.display='block';
+    document.getElementById('map_section').style.display='block';
+    document.getElementById('fault_section').style.display='none';
+    document.getElementById('detail_section').style.display='none';
+    select_location();   
+}
+
+function select_Sfault() {
+    if (map.hasLayer()) {
+    map.removeLayer(marker); }
+    x=0;
+    fault= 'Signage';
+    document.getElementById('start_section').style.display='none';
+    document.getElementById('navbar_section').style.display='block';
+    document.getElementById('map_section').style.display='block';
+    document.getElementById('fault_section').style.display='none';
+    document.getElementById('detail_section').style.display='none';
+    select_location();   
+}
+
+function select_Pfault() {
+    if (map.hasLayer()) {
+    map.removeLayer(marker); }
+    x=0;
+    fault= 'Pothole';
+    document.getElementById('start_section').style.display='none';
+    document.getElementById('navbar_section').style.display='block';
+    document.getElementById('map_section').style.display='block';
+    document.getElementById('fault_section').style.display='none';
+    document.getElementById('detail_section').style.display='none';
+    select_location();   
+}
+
+function select_Mfault() {
+    if (map.hasLayer()) {
+    map.removeLayer(marker); }
+    x=0;
+    fault= 'Manhole';
+    document.getElementById('start_section').style.display='none';
+    document.getElementById('navbar_section').style.display='block';
+    document.getElementById('map_section').style.display='block';
+    document.getElementById('fault_section').style.display='none';
+    document.getElementById('detail_section').style.display='none';
+    select_location();   
+}
+
+function select_GRfault() {
+    if (map.hasLayer()) {
+    map.removeLayer(marker); }
+    x=0;
+    fault= 'Guardrails';
+    document.getElementById('start_section').style.display='none';
+    document.getElementById('navbar_section').style.display='block';
+    document.getElementById('map_section').style.display='block';
+    document.getElementById('fault_section').style.display='none';
+    document.getElementById('detail_section').style.display='none';
+    select_location();   
+}
+
+function select_RMfault() {
+    if (map.hasLayer()) {
+    map.removeLayer(marker); }
+    x=0;
+    fault= 'Road Markings';
+    document.getElementById('start_section').style.display='none';
+    document.getElementById('navbar_section').style.display='block';
+    document.getElementById('map_section').style.display='block';
+    document.getElementById('fault_section').style.display='none';
+    document.getElementById('detail_section').style.display='none';
+    select_location();   
+}
+
+function select_SNfault() {
+    if (map.hasLayer()) {
+    map.removeLayer(marker); }
+    x=0;
+    fault= 'Street Names';
+    document.getElementById('start_section').style.display='none';
+    document.getElementById('navbar_section').style.display='block';
+    document.getElementById('map_section').style.display='block';
+    document.getElementById('fault_section').style.display='none';
+    document.getElementById('detail_section').style.display='none';
+    select_location();   
+}
+
+function select_Wfault() {
+    if (map.hasLayer()) {
+    map.removeLayer(marker); }
+    x=0;
+    fault= 'Weeds/Grass';
+    document.getElementById('start_section').style.display='none';
+    document.getElementById('navbar_section').style.display='block';
+    document.getElementById('map_section').style.display='block';
+    document.getElementById('fault_section').style.display='none';
+    document.getElementById('detail_section').style.display='none';
+    select_location();   
+}
+
+function select_Pavfault() {
+    if (map.hasLayer()) {
+    map.removeLayer(marker); }
+    x=0;
+    fault= 'Pavements';
+    document.getElementById('start_section').style.display='none';
+    document.getElementById('navbar_section').style.display='block';
+    document.getElementById('map_section').style.display='block';
+    document.getElementById('fault_section').style.display='none';
+    document.getElementById('detail_section').style.display='none';
+    select_location();   
+}
+
+function select_SDfault() {
+    if (map.hasLayer()) {
+    map.removeLayer(marker); }
+    x=0;
+    fault= 'Stormwater Drains';
+    document.getElementById('start_section').style.display='none';
+    document.getElementById('navbar_section').style.display='block';
+    document.getElementById('map_section').style.display='block';
+    document.getElementById('fault_section').style.display='none';
+    document.getElementById('detail_section').style.display='none';
+    select_location();   
 }
 
 function register() {
@@ -285,7 +430,15 @@ function submit_element() {
   type_element=document.getElementById('typeelement').value;
   if (type_element!="") {
     document.getElementById('map_section').style.display='block';
+    document.getElementById('fault_section').style.display='none';
     document.getElementById('capturing_section').style.display='none';
+      document.getElementById("help_section").style.display = "none";
+      document.getElementById("about_section").style.display = "none";
+      document.getElementById("contact_section").style.display = "none";
+      document.getElementById("capturing_form").style.display = "none";
+      document.getElementById("logged_section").style.display = "none";
+      document.getElementById("watchlist_section").style.display = "none";
+      document.getElementById('detail_section').style.display='none';
     document.getElementById('myImage').style.display='none';
 
     map.removeLayer(marker);
@@ -321,6 +474,14 @@ function capture_back() {
   x=0;
   document.getElementById('map_section').style.display='block';
   document.getElementById('capturing_section').style.display='none';
+  document.getElementById("fault_section").style.display = "none";
+  document.getElementById("help_section").style.display = "none";
+  document.getElementById("about_section").style.display = "none";
+  document.getElementById("contact_section").style.display = "none";
+  document.getElementById("capturing_form").style.display = "none";
+  document.getElementById("logged_section").style.display = "none";
+  document.getElementById("watchlist_section").style.display = "none";
+  document.getElementById('detail_section').style.display='none';
   document.getElementById('myImage').style.display='none';
 
   map.removeLayer(marker);
@@ -378,10 +539,19 @@ x = 0;
                   document.getElementById('date').value=today_date;
                   document.getElementById('time').value=today_time;
                   document.getElementById('usernamecapture').value=user;
+                  document.getElementById('faulttype').value=fault;
                   longitude=longitude_pre;
                   latitude=latitude_pre;
                   document.getElementById('map_section').style.display='none';
                   document.getElementById('capturing_section').style.display='block';
+                  document.getElementById("fault_section").style.display = "none";
+                  document.getElementById("help_section").style.display = "none";
+                  document.getElementById("about_section").style.display = "none";
+                  document.getElementById("contact_section").style.display = "none";
+                  document.getElementById("capturing_form").style.display = "block";
+                  document.getElementById("logged_section").style.display = "none";
+                  document.getElementById("watchlist_section").style.display = "none";
+                  document.getElementById('detail_section').style.display='none';
                 };
 
                 document.getElementById('map_section').appendChild(accuracy_div);
@@ -464,6 +634,7 @@ x = 0;
                 document.getElementById('date').value=today_date;
                 document.getElementById('time').value=today_time;
                 document.getElementById('usernamecapture').value=user;
+                document.getElementById('faulttype').value=fault;
 						};
 
     popup.appendChild(message1);
@@ -496,6 +667,14 @@ function onMapClick(e) {
   message1.onclick = function showCapturingForm(){
               document.getElementById('map_section').style.display='none';
               document.getElementById('capturing_section').style.display='block';
+              document.getElementById("fault_section").style.display = "none";
+              document.getElementById("help_section").style.display = "none";
+              document.getElementById("about_section").style.display = "none";
+              document.getElementById("contact_section").style.display = "none";
+              document.getElementById("capturing_form").style.display = "block";
+              document.getElementById("logged_section").style.display = "none";
+              document.getElementById("watchlist_section").style.display = "none";
+              document.getElementById('detail_section').style.display='none';
               popup.parentNode.removeChild(popup);
               x++;
           };
@@ -556,11 +735,15 @@ function goHome() {
     map.removeLayer(marker);
   }
   x=0;
-  document.getElementById("map_section").style.display = "block";
+  document.getElementById("fault_section").style.display = "block";
   document.getElementById("help_section").style.display = "none";
+  document.getElementById("map_section").style.display = "none";
   document.getElementById("about_section").style.display = "none";
   document.getElementById("contact_section").style.display = "none";
   document.getElementById("capturing_form").style.display = "none";
+  document.getElementById("logged_section").style.display = "none";
+  document.getElementById("watchlist_section").style.display = "none";
+  document.getElementById('detail_section').style.display='none';
   closeNav();
 }
 
@@ -570,10 +753,14 @@ function goHelp() {
   }
   x=0;
   document.getElementById("map_section").style.display = "none";
+  document.getElementById("fault_section").style.display = "none";
   document.getElementById("help_section").style.display = "block";
   document.getElementById("about_section").style.display = "none";
   document.getElementById("contact_section").style.display = "none";
   document.getElementById("capturing_form").style.display = "none";
+  document.getElementById("logged_section").style.display = "none";
+  document.getElementById("watchlist_section").style.display = "none";
+  document.getElementById('detail_section').style.display='none';
   var popup_choose=document.getElementById('locationsetting')
   if (popup_choose) {
     popup_choose.parentNode.removeChild(popup_choose);
@@ -591,10 +778,14 @@ function goAbout() {
   }
   x=0;
   document.getElementById("map_section").style.display = "none";
+  document.getElementById("fault_section").style.display = "none";
   document.getElementById("help_section").style.display = "none";
   document.getElementById("about_section").style.display = "block";
   document.getElementById("contact_section").style.display = "none";
   document.getElementById("capturing_form").style.display = "none";
+  document.getElementById("logged_section").style.display = "none";
+  document.getElementById("watchlist_section").style.display = "none";
+  document.getElementById('detail_section').style.display='none';
   var popup_choose=document.getElementById('locationsetting')
   if (popup_choose) {
     popup_choose.parentNode.removeChild(popup_choose);
@@ -612,10 +803,88 @@ function goContact() {
   }
   x=0;
   document.getElementById("map_section").style.display = "none";
+  document.getElementById("fault_section").style.display = "none";
   document.getElementById("help_section").style.display = "none";
   document.getElementById("about_section").style.display = "none";
   document.getElementById("capturing_form").style.display = "none";
   document.getElementById("contact_section").style.display = "block";
+  document.getElementById("logged_section").style.display = "none";
+  document.getElementById("watchlist_section").style.display = "none";
+  document.getElementById('detail_section').style.display='none';
+  var popup_choose=document.getElementById('locationsetting')
+  if (popup_choose) {
+    popup_choose.parentNode.removeChild(popup_choose);
+  }
+  var popup_submit=document.getElementById('digitalizeoptions')
+  if (popup_submit) {
+    popup_submit.parentNode.removeChild(popup_submit);
+  }
+  closeNav();
+}
+
+function goLogged() {
+  if (map.hasLayer()) {
+    map.removeLayer(marker);
+  }
+  x=0;
+  document.getElementById("map_section").style.display = "none";
+  document.getElementById("fault_section").style.display = "none";
+  document.getElementById("help_section").style.display = "none";
+  document.getElementById("about_section").style.display = "none";
+  document.getElementById("capturing_form").style.display = "none";
+  document.getElementById("contact_section").style.display = "none";
+  document.getElementById("logged_section").style.display = "block";
+  document.getElementById("watchlist_section").style.display = "none";
+  document.getElementById('detail_section').style.display='none';
+  var popup_choose=document.getElementById('locationsetting')
+  if (popup_choose) {
+    popup_choose.parentNode.removeChild(popup_choose);
+  }
+  var popup_submit=document.getElementById('digitalizeoptions')
+  if (popup_submit) {
+    popup_submit.parentNode.removeChild(popup_submit);
+  }
+  closeNav();
+}
+function goWatch() {
+  if (map.hasLayer()) {
+    map.removeLayer(marker);
+  }
+  x=0;
+  document.getElementById("map_section").style.display = "none";
+  document.getElementById("fault_section").style.display = "none";
+  document.getElementById("help_section").style.display = "none";
+  document.getElementById("about_section").style.display = "none";
+  document.getElementById("capturing_form").style.display = "none";
+  document.getElementById("contact_section").style.display = "none";
+  document.getElementById("logged_section").style.display = "none";
+  document.getElementById("watchlist_section").style.display = "block";
+  document.getElementById('detail_section').style.display='none';
+  var popup_choose=document.getElementById('locationsetting')
+  if (popup_choose) {
+    popup_choose.parentNode.removeChild(popup_choose);
+  }
+  var popup_submit=document.getElementById('digitalizeoptions')
+  if (popup_submit) {
+    popup_submit.parentNode.removeChild(popup_submit);
+  }
+  closeNav();
+}
+
+function goDetail() {
+  if (map.hasLayer()) {
+    map.removeLayer(marker);
+  }
+  x=0;
+  document.getElementById("map_section").style.display = "none";
+  document.getElementById("fault_section").style.display = "none";
+  document.getElementById("help_section").style.display = "none";
+  document.getElementById("about_section").style.display = "none";
+  document.getElementById("capturing_form").style.display = "none";
+  document.getElementById("contact_section").style.display = "none";
+  document.getElementById("logged_section").style.display = "none";
+  document.getElementById("watchlist_section").style.display = "none";
+  document.getElementById('detail_section').style.display='block';
   var popup_choose=document.getElementById('locationsetting')
   if (popup_choose) {
     popup_choose.parentNode.removeChild(popup_choose);
