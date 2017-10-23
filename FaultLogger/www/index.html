@@ -70,7 +70,7 @@
     	  <a onclick="goAbout()">About</a>
     	  <a onclick="goHelp()">Help</a>
     	  <a onclick="goContact()">Contact</a>
-          <a onclick="">Signout</a>
+          <a onclick="goSignout()">Signout</a>
     	</div>
     </section>
     <!-- **************************************** START SECTION ******************************* -->
@@ -129,18 +129,21 @@
     <section id="fault_section" style="display: none">
       <div id="faultid"></div>
       <h1> Log your fault </h1><br>
-      <h3>  Click on the fault you would like to log </h3><br>
+      <h3>  Click on the fault you would like to log </h3>
+
       <button type="button" id="capture_general" class="capture_general"  value="General" onclick="select_Gfault()"><img src="img/General.png" alt="capture icon"><figcaption>General</figcaption></button>
       <button type="button" id="capture_traffic" class="capture_traffic"  value="Traffic Robot" onclick="select_Rfault()"><img src="img/Traffic.png" alt="capture icon"><figcaption>Robots</figcaption></button>
-      <button type="button" id="capture_signage" class="capture_signage"  value="Signage" onclick="select_Sfault()"><img src="img/Signage.png" alt="capture icon"><figcaption>Signage</figcaption></button><br>
+      <button type="button" id="capture_signage" class="capture_signage"  value="Signage" onclick="select_Sfault()"><img src="img/Signage.png" alt="capture icon"><figcaption>Signage</figcaption></button><br><br><br><br><br><br>
+
       <p> Other faults: </p>
       <button type="button" id="capture_pothole" class="capture_pothole"  value="Pothole" onclick="select_Pfault()"><img src="img/Pothole.png" alt="capture icon"><figcaption>Pothole</figcaption></button>
       <button type="button" id="capture_manhole" class="capture_manhole"  value="Manhole" onclick="select_Mfault()"><img src="img/Manhole.png" alt="capture icon"><figcaption>Manhole</figcaption></button>
-            <button type="button" id="capture_rails" class="capture_rails"  value="Rails" onclick="select_GRfault()"><img src="img/Rails.png" alt="capture icon"><figcaption>Rails</figcaption></button><br>
+            <button type="button" id="capture_rails" class="capture_rails"  value="Rails" onclick="select_GRfault()"><img src="img/Rails.png" alt="capture icon"><figcaption>Rails</figcaption></button><br><br><br><br><br><br>
             
       <button type="button" id="capture_markings" class="capture_markings"  value="Road Markings" onclick="select_RMfault()"><img src="img/Markings.png" alt="capture icon"><figcaption>Road<br>Marking</figcaption></button>
       <button type="button" id="capture_names" class="capture_names"  value="Street Names" onclick="select_SNfault()"><img src="img/Names.ico" alt="capture icon"><figcaption>Street<br>Names</figcaption></button>
-      <button type="button" id="capture_weeds" class="capture_weeds"  value="Weeds/Grass" onclick="select_Wfault()"><img src="img/Weeds.png" alt="capture icon"><figcaption>Weeds/<br>Grass</figcaption></button><br>
+      <button type="button" id="capture_weeds" class="capture_weeds"  value="Weeds/Grass" onclick="select_Wfault()"><img src="img/Weeds.png" alt="capture icon"><figcaption>Weeds/<br>Grass</figcaption></button><br><br><br><br><br><br><br>
+
       <button type="button" id="capture_pavements" class="capture_pavements"  value="Pavements" onclick="select_Pavfault()"><img src="img/Pavements.png" alt="capture icon"><figcaption>Pavements</figcaption></button>
       <button type="button" id="capture_storm" class="capture_storm"  value="Stormwater Drainage" onclick="select_SDfault()"><img src="img/Storm.png" alt="capture icon"><figcaption>Stormwater Drainage</figcaption></button><br>
       
@@ -165,6 +168,7 @@
           <!-- Type of element (datalist) -->
           <p for="fault" class="label">Type of fault:</p><br>
           <p for="type" class="label">Type of issue:</p></br>
+          <p for="type" class="label">Area name:</p></br>
           <p for="date" class="label date">Date:</p></br>
           <p for="time" class="label">Time:</p></br>
           <p for="username" class="label">Username:</p>
@@ -172,14 +176,43 @@
 
         <div class="right">
           <input type="text" name="faulttype" id="faulttype" disabled></br>
-          <select name="Types" id="typeelement" onchange="yesnoCheck(this);">
-            <option value="" selected disabled>Please select</option>
+          <select name="typeelement" id="typeelement" onchange="yesnoCheck(this);">
+            <option value="" selected disabled>Select</option>
             <option value="Broken">Broken</option>
             <option value="Missing">Missing</option>
             <option value="Maintenance">Maintenance</option>
             <option value="New">New</option>
           </select>
 
+          <select name="desc" id="desc" onchange="yesnoCheck(this);">
+            <option value="" selected disabled>Select</option>
+            <option value="I don't know">I don't know</option>
+            <option value="Akasia">Akasia</option>
+            <option value="Atteridgeville">Atteridgeville</option>
+            <option value="Bronberg">Bronberg</option>
+            <option value="Bronkhorstspruit">Bronkhorstspruit</option>
+            <option value="Centurion">Centurion</option>
+            <option value="Crocodile River">Crocodile River</option>
+            <option value="Cullinan/Rayton/Refilwe">Cullinan/Rayton/Refilwe</option>
+            <option value="Eersterust">Eersterust</option>
+
+            <option value="Ekangala">Ekangala</option>
+            <option value="Elands River">Elands River</option>
+            <option value="Ga-Rankuwa">Ga-Rankuwa</option>
+            <option value="Hammanskraal">Hammanskraal</option>
+            <option value="Laudium">Laudium</option>
+            <option value="Mabopane">Mabopane</option>
+            <option value="Mamelodi">Mamelodi</option>
+            <option value="Pienaarsrivier">Pienaarsrivier</option>
+
+            <option value="Pretoria">Pretoria</option>
+            <option value="Rethabiseng">Rethabiseng</option>
+            <option value="Roodeplaat">Roodeplaat</option>
+            <option value="Soshanguve">Soshanguve</option>
+            <option value="Temba">Temba</option>
+            <option value="Winterveld">Winterveld</option>
+            <option value="Zithobeni">Zithobeni</option>
+          </select>
 
           <input type="text" name="date" id="date" placeholder="31/07/2017" disabled></br>
 
@@ -188,11 +221,6 @@
           <input type="text" name="username" id="usernamecapture" maxlength="50" placeholder="Amy" disabled></br>
         </div></br>
 
-        <!-- Description (textarea) -->
-        <p for="desc" id="descriptioncreate" class="desc_label">Description:</p>
-        <textarea rows="4" cols="50" name="desc" id="desc" placeholder="Describe the location..."></textarea></br>
-
-        <button type="button" id="photo_bttn" class="photo_bttn" onclick="cameraTakePicture()"><img class="camera_img" src="img/camera.svg" alt="capture icon"></button>
         <button type="button" id="capture_back_bttn" class="capture_back_bttn" onclick="capture_back()">Back</button>
         <button type="button" id="submit_bttn" class="submit_bttn" onclick="submit_element()">Submit</button>
         <img id = "myImage" class="myImage"></img>
@@ -201,6 +229,7 @@
     <!-- ***************************************************** LOGGED SECTION *********************************************** -->
     <section id="logged_section" style="display: none">
     <h1> Welcome to the logged issues section! </h1>
+    <h2 id='userlogged'> Welcome to the logged issues section! </h2>
     </section>
     
     <!-- ***************************************************** DETAIL SECTION *********************************************** -->
@@ -212,7 +241,42 @@
     <!-- ***************************************************** WATCHLIST SECTION *********************************************** -->
     <section id="watchlist_section" style="display: none">
     <h1> Welcome to the watch list section! </h1>
+    <h3> Please select an area to view all the faults for the selected area! </h3>
+    <form name="watch_form" id="watch_form" class="form" method="get" >
+    <select name="suburb" id="suburb" onchange="yesnoCheck(this);">
+            <option value="" selected disabled>Select</option>
+
+            <option value="Akasia">Akasia</option>
+            <option value="Atteridgeville">Atteridgeville</option>
+            <option value="Bronberg">Bronberg</option>
+            <option value="Bronkhorstspruit">Bronkhorstspruit</option>
+            <option value="Centurion">Centurion</option>
+            <option value="Crocodile River">Crocodile River</option>
+            <option value="Cullinan/Rayton/Refilwe">Cullinan/Rayton/Refilwe</option>
+            <option value="Eersterust">Eersterust</option>
+
+            <option value="Ekangala">Ekangala</option>
+            <option value="Elands River">Elands River</option>
+            <option value="Ga-Rankuwa">Ga-Rankuwa</option>
+            <option value="Hammanskraal">Hammanskraal</option>
+            <option value="Laudium">Laudium</option>
+            <option value="Mabopane">Mabopane</option>
+            <option value="Mamelodi">Mamelodi</option>
+            <option value="Pienaarsrivier">Pienaarsrivier</option>
+
+            <option value="Pretoria">Pretoria</option>
+            <option value="Rethabiseng">Rethabiseng</option>
+            <option value="Roodeplaat">Roodeplaat</option>
+            <option value="Soshanguve">Soshanguve</option>
+            <option value="Temba">Temba</option>
+            <option value="Winterveld">Winterveld</option>
+            <option value="Zithobeni">Zithobeni</option>
+          </select><br><br>
+          <button type="button" id="submitwatch_bttn" class="submitwatch_bttn" onclick="submitwatch_element()">Submit</button>
+          </form>
+          <h2 id='watchlistheading'></h2>
     </section>
+
     
     <!-- ***************************************************** ABOUT SECTION *********************************************** -->
     <section id="about_section" style="display: none">
@@ -318,6 +382,17 @@
 
       <a href="#backtotop">Back to top</a><br>
     </section>
+
+<!-- ***************************************** SIGN OUT SECTION ******************************************** -->
+<section id="signout_section" style="display: none">
+<h2>Do you really want to sign out? </h2>
+<button type="button" id="signout_bttn" class="signout_bttn" onclick="signout_bttn_element()">Sign me out!</button>
+</section>
+
+<section id="goodbye_section" style="display: none">
+<h2>Thank you for using Tswane Fault Logger! Goodbye...</h2>
+</section>
+
 
 
     <script type="text/javascript" src="cordova.js"></script>

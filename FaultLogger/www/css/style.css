@@ -1,4 +1,4 @@
-/*********************************************** INDEX CSS *****************************************/
+lo/*********************************************** INDEX CSS *****************************************/
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -32,7 +32,7 @@ body {
     height:100%;
     margin:0px;
     padding:0px;
-    text-transform:uppercase;
+    /*text-transform:uppercase;*/
     width:100%;
     display: block;
 }
@@ -66,6 +66,7 @@ h1 {
     padding:0px;
     text-align:center;
 }
+
 
 .event {
     border-radius:4px;
@@ -178,7 +179,7 @@ h1 {
   float: left;
   left: 50%;
   margin-right: -50%;
-  margin-top: 1em;
+  margin-top: 3.5em;
   margin-bottom: 1em;
   -webkit-transform: translate(-50%);
   z-index: 9999;
@@ -199,59 +200,148 @@ h1 {
 }
 
 .capture_general {
-    width: 80px;
+    position: absolute;
+  float: left;
+  left: 1%;
+  width: 80px;
     height: 90px;
+
+  z-index: 9999;
+  padding-top: 0.3em;
+  padding-bottom: 0.1em;
+  padding-right: 0.1em;
+  padding-left: 0.1em;
+
 }
 
 .capture_traffic {
-    width: 80px;
+    position: absolute;
+  float: left;
+  left: 30%;
+  width: 80px;
     height: 90px;
+  z-index: 9999;
+  padding-top: 0.3em;
+  padding-bottom: 0.1em;
+  padding-right: 0.1em;
+  padding-left: 0.1em;
 }
 
 .capture_signage {
-    width: 80px;
+    position: absolute;
+  float: left;
+  left: 59%;
+  width: 80px;
     height: 90px;
+  z-index: 9999;
+  padding-top: 0.3em;
+  padding-bottom: 0.1em;
+  padding-right: 0.1em;
+  padding-left: 0.1em;
 }
 
 .capture_pothole {
-    width: 80px;
+    position: absolute;
+  float: left;
+  left: 1%;
+  width: 80px;
     height: 90px;
+  z-index: 9999;
+  padding-top: 0.3em;
+  padding-bottom: 0.1em;
+  padding-right: 0.1em;
+  padding-left: 0.1em;
 }
 
 .capture_manhole {
-    width: 80px;
+    position: absolute;
+  float: left;
+  left: 30%;
+  width: 80px;
     height: 90px;
+  z-index: 9999;
+  padding-top: 0.3em;
+  padding-bottom: 0.1em;
+  padding-right: 0.1em;
+  padding-left: 0.1em;
 }
 
 .capture_rails {
-    width: 80px;
+    position: absolute;
+  float: left;
+  left: 59%;
+  width: 80px;
     height: 90px;
+  z-index: 9999;
+  padding-top: 0.3em;
+  padding-bottom: 0.1em;
+  padding-right: 0.1em;
+  padding-left: 0.1em;
 }
 
 .capture_markings {
-    width: 80px;
-    height: 90px;
+        position: absolute;
+  float: left;
+  left: 1%;
+  width: 80px;
+    height: 100px;
+  z-index: 9999;
+  padding-top: 0.3em;
+  padding-bottom: 0.1em;
+  padding-right: 0.1em;
+  padding-left: 0.1em;
 }
 
 .capture_names {
-    width: 80px;
-    height: 90px;
+        position: absolute;
+  float: left;
+  left: 30%;
+  width: 80px;
+    height: 100px;
+  z-index: 9999;
+  padding-top: 0.3em;
+  padding-bottom: 0.1em;
+  padding-right: 0.1em;
+  padding-left: 0.1em;
 }
 
 .capture_weeds {
-    width: 80px;
-    height: 90px;
+  position: absolute;
+  float: left;
+  left: 59%;
+  width: 80px;
+    height: 100px;
+  z-index: 9999;
+  padding-top: 0.3em;
+  padding-bottom: 0.1em;
+  padding-right: 0.1em;
+  padding-left: 0.1em;
 }
 
 .capture_pavements {
-    position: relative;
+    position: absolute;
+  float: left;
+  left: 1%;
     width: 100px;
-    height: 90px;
+    height: 100px;
+      z-index: 9999;
+  padding-top: 0.3em;
+  padding-bottom: 0.1em;
+  padding-right: 0.1em;
+  padding-left: 0.1em;
 }
 
 .capture_storm {
+    position: absolute;
+  float: left;
+  left: 38%;
     width: 143px;
-    height: 90px;
+    height: 100px;
+      z-index: 9999;
+  padding-top: 0.3em;
+  padding-bottom: 0.1em;
+  padding-right: 0.1em;
+  padding-left: 0.1em;
 }
 
 .register_bttn2 {
@@ -418,47 +508,47 @@ a:active {
 }
 
 .label {
-  font: bold 1em verdana, sans-serif;
-	margin-top: 0.7em;
+  font: bold 1em arial, sans-serif;
+	margin-top: 0.8em;
   margin-bottom: 0em;
 }
 
 .date {
-	font: bold 1em verdana, sans-serif;
+	font: bold 1em arial, sans-serif;
 	margin-top: 0em;
   margin-bottom: 0em;
 }
 
 .desc_label {
-	font: bold 1em verdana, sans-serif;
+	font: bold 1em arial, sans-serif;
   margin-top: 1em;
   margin-bottom: 0em;
 }
 
 .label_contact {
-	font: bold 0.8em verdana, sans-serif;
+	font: bold 0.8em arial, sans-serif;
   margin-top: 0.6em;
   margin-bottom: 0em;
 }
 
 .label_contact_last_name {
-  font: bold 0.8em verdana, sans-serif;
+  font: bold 0.8em arial, sans-serif;
   margin-top: 1em;
   margin-bottom: 0em;
 }
 
 .label_contact_email {
-  font: bold 0.8em verdana, sans-serif;
+  font: bold 0.8em arial, sans-serif;
   margin-top: 0.1em;
   margin-bottom: 0em;
 }
 
 .title_register {
-  font: bold 1.3em verdana, sans-serif;
+  font: bold 1.3em arial, sans-serif;
 }
 
 .title_contact {
-  font: bold 1.1em verdana, sans-serif;
+  font: bold 1.1em arial, sans-serif;
 }
 
 form input {
@@ -588,7 +678,7 @@ textarea:focus {
 	border: none;
 	border-radius: 1em;
   height: 3.7em;
-  font: bold 1.1em verdana, sans-serif;
+  font: bold 1.1em arial, sans-serif;
 }
 
 .capture_back_bttn {
@@ -610,7 +700,7 @@ textarea:focus {
 	border: none;
 	border-radius: 1em;
   height: 3.7em;
-  font: bold 1.1em verdana, sans-serif;
+  font: bold 1.1em arial, sans-serif;
 }
 
 .back_bttn {
@@ -631,9 +721,51 @@ textarea:focus {
 	border: none;
 	border-radius: 1em;
   height: 3.7em;
-  font: bold 1.1em verdana, sans-serif;
+  font: bold 1.1em arial, sans-serif;
 }
 
+.submitwatch_bttn {
+position: relative;
+  width: 45%;
+  float: left;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  padding-right: 0.1em;
+  padding-left: 0.1em;
+  bottom: 0.5em;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #999999;
+  border: none;
+  border-radius: 1em;
+  height: 3.7em;
+  font: bold 1.1em arial, sans-serif;
+
+}
+
+.signout_bttn {
+    position: relative;
+  width: 45%;
+  float: left;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  padding-right: 0.1em;
+  padding-left: 0.1em;
+  bottom: 0.5em;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #999999;
+  border: none;
+  border-radius: 1em;
+  height: 3.7em;
+  font: bold 1.1em arial, sans-serif;
+}
 .send_bttn {
 	position: relative;
   width: 45%;
@@ -652,7 +784,7 @@ textarea:focus {
 	border: none;
 	border-radius: 1em;
   height: 3.7em;
-  font: bold 1.1em verdana, sans-serif;
+  font: bold 1.1em arial, sans-serif;
 }
 
 button:hover {
@@ -787,7 +919,7 @@ body {
     -webkit-transform: translate(-50%, 290%);
     width:15em;
     height:8em;
-    font: bold 1em verdana, sans-serif;
+    font: bold 1em arial, sans-serif;
     background-color: #ffffff;
     padding: 1em;
     padding-left: 0.5em;
@@ -805,7 +937,7 @@ body {
   -webkit-transform: translate(-50%, 290%);
   width:15em;
   height:8em;
-  font: bold 1em verdana, sans-serif;
+  font: bold 1em arial, sans-serif;
   background-color: #ffffff;
   padding: 1em;
   padding-left: 0.5em;

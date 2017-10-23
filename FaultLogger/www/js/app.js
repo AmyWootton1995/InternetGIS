@@ -12,7 +12,7 @@ map = L.map('mapid', {
       text: 'Show Coordinates',
       callback: showCoordinates
   }]
-}).setView([-25.729792, 28.445576], 16);
+}).setView([-25.7479, 28.2293], 11);
 
 // load a tile layer
 var OpenStreetMap =L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -21,7 +21,7 @@ var OpenStreetMap =L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.pn
       maxZoom: 20,
       minZoom: 11
     });
-//OpenStreetMap.addTo(map)
+OpenStreetMap.addTo(map)
 
 var OpenTopoMap = L.tileLayer('http://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
     {
@@ -38,11 +38,11 @@ var Esri_WorldImagery = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/
    maxZoom: 19,
      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
     });
-Esri_WorldImagery.addTo(map)
+//Esri_WorldImagery.addTo(map)
 
 Social = L.geoJson();
 //Load Social GeoJson from Geoserver
-var geoJsonUrl ="http://41.185.27.219:8080/geoserver/dev1/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dev1:registered_items&outputFormat=text/javascript&format_options=callback:registered_items";
+var geoJsonUrl ="http://41.185.93.18:8080/geoserver/faultlogger/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=faultlogger:registered_items&outputFormat=text/javascript&format_options=callback:registered_items";
 
 $.ajax({
     jsonp : false,
@@ -239,6 +239,8 @@ function log_in() {
     document.getElementById('detail_section').style.display='none';
   }
   map._onResize();
+  document.getElementById("userlogged").innerHTML = "Issues logged for user " + user + ":";
+  
 }
 
 function select_Gfault() {
@@ -414,7 +416,7 @@ function register_done() {
 
   $.ajax({
 		  type: "POST",
-		  url:"http://41.185.27.219/devgroup1/adduser.php",
+		  url:"http://41.185.93.18/faultlogger/adduser.php",
 		  data: dataString,
 		  crossDomain: true,
 		  cache: false,
@@ -449,18 +451,21 @@ function submit_element() {
   //********* AJAX SERVER CONNECTION *****************/
   var lat = latitude;
 	var lng = longitude;
-	var type = document.getElementById('typeelement').value;
+	var ftype = document.getElementById('typeelement').value;
 	var date =  document.getElementById('date').value;
 	var time =  document.getElementById('time').value;
 	var other =  document.getElementById('other').value;
 	var username =  document.getElementById('usernamecapture').value;
-	var description =  document.getElementById('desc').value;
+	var suburb =  document.getElementById('desc').value;
+  var picture =  dummy;
+  // var picture =  document.getElementById('picture').value;
+  var itype =  document.getElementById('faulttype').value;
 
-  var dataString="&latitude="+lat+"&longitude="+lng+"&typeelement="+type+"&date="+date+"&time="+time+"&other="+other+"&username="+username+"&description="+description;
+  var dataString="&latitude="+lat+"&longitude="+lng+"&typeelement="+type+"&date="+date+"&time="+time+"&username="+username+"&suburb="+suburb + "&picture=" + picture + "&faulttype="  +itype;
 
   $.ajax({
 		  type: "POST",
-		  url:"http://41.185.27.219/devgroup1/addpoint.php",
+		  url:"http://41.185.93.18/faultlogger/addpoint.php",
 		  data: dataString,
 		  crossDomain: true,
 		  cache: false,
@@ -470,6 +475,11 @@ function submit_element() {
   map._onResize();
 }
 
+function submitwatch_element(){
+var suburb =  document.getElementById('suburb').value;
+document.getElementById("watchlistheading").innerHTML = "The faults reported for area " + suburb + ":";
+
+}
 function capture_back() {
   x=0;
   document.getElementById('map_section').style.display='block';
@@ -744,9 +754,34 @@ function goHome() {
   document.getElementById("logged_section").style.display = "none";
   document.getElementById("watchlist_section").style.display = "none";
   document.getElementById('detail_section').style.display='none';
+  document.getElementById('signout_section').style.display='none';
   closeNav();
 }
-
+function goSignout() {
+   if (map.hasLayer()) {
+    map.removeLayer(marker);
+  }
+  x=0;
+  document.getElementById("map_section").style.display = "none";
+  document.getElementById("fault_section").style.display = "none";
+  document.getElementById("help_section").style.display = "none";
+  document.getElementById("about_section").style.display = "none";
+  document.getElementById("contact_section").style.display = "none";
+  document.getElementById("capturing_form").style.display = "none";
+  document.getElementById("logged_section").style.display = "none";
+  document.getElementById("watchlist_section").style.display = "none";
+  document.getElementById('detail_section').style.display='none';
+    document.getElementById('signout_section').style.display='block';
+  var popup_choose=document.getElementById('locationsetting')
+  if (popup_choose) {
+    popup_choose.parentNode.removeChild(popup_choose);
+  }
+  var popup_submit=document.getElementById('digitalizeoptions')
+  if (popup_submit) {
+    popup_submit.parentNode.removeChild(popup_submit);
+  }
+  closeNav(); 
+}
 function goHelp() {
   if (map.hasLayer()) {
     map.removeLayer(marker);
@@ -761,6 +796,7 @@ function goHelp() {
   document.getElementById("logged_section").style.display = "none";
   document.getElementById("watchlist_section").style.display = "none";
   document.getElementById('detail_section').style.display='none';
+  document.getElementById('signout_section').style.display='none';
   var popup_choose=document.getElementById('locationsetting')
   if (popup_choose) {
     popup_choose.parentNode.removeChild(popup_choose);
@@ -786,6 +822,7 @@ function goAbout() {
   document.getElementById("logged_section").style.display = "none";
   document.getElementById("watchlist_section").style.display = "none";
   document.getElementById('detail_section').style.display='none';
+  document.getElementById('signout_section').style.display='none';
   var popup_choose=document.getElementById('locationsetting')
   if (popup_choose) {
     popup_choose.parentNode.removeChild(popup_choose);
@@ -811,6 +848,7 @@ function goContact() {
   document.getElementById("logged_section").style.display = "none";
   document.getElementById("watchlist_section").style.display = "none";
   document.getElementById('detail_section').style.display='none';
+  document.getElementById('signout_section').style.display='none';
   var popup_choose=document.getElementById('locationsetting')
   if (popup_choose) {
     popup_choose.parentNode.removeChild(popup_choose);
@@ -836,6 +874,7 @@ function goLogged() {
   document.getElementById("logged_section").style.display = "block";
   document.getElementById("watchlist_section").style.display = "none";
   document.getElementById('detail_section').style.display='none';
+  document.getElementById('signout_section').style.display='none';
   var popup_choose=document.getElementById('locationsetting')
   if (popup_choose) {
     popup_choose.parentNode.removeChild(popup_choose);
@@ -860,6 +899,7 @@ function goWatch() {
   document.getElementById("logged_section").style.display = "none";
   document.getElementById("watchlist_section").style.display = "block";
   document.getElementById('detail_section').style.display='none';
+  document.getElementById('signout_section').style.display='none';
   var popup_choose=document.getElementById('locationsetting')
   if (popup_choose) {
     popup_choose.parentNode.removeChild(popup_choose);
@@ -885,6 +925,7 @@ function goDetail() {
   document.getElementById("logged_section").style.display = "none";
   document.getElementById("watchlist_section").style.display = "none";
   document.getElementById('detail_section').style.display='block';
+  document.getElementById('signout_section').style.display='none';
   var popup_choose=document.getElementById('locationsetting')
   if (popup_choose) {
     popup_choose.parentNode.removeChild(popup_choose);
@@ -894,4 +935,19 @@ function goDetail() {
     popup_submit.parentNode.removeChild(popup_submit);
   }
   closeNav();
+}
+
+function signout_bttn_element() {
+    document.getElementById('username').value = null;
+    document.getElementById('password').value = null;
+    document.getElementById('typeelement').selectedIndex = 0;
+    document.getElementById('desc').selectedIndex = 0;
+    document.getElementById('suburb').selectedIndex = 0;
+    document.getElementById('start_section').style.display='none';
+    document.getElementById('navbar_section').style.display='none';
+    document.getElementById('map_section').style.display='none';
+    document.getElementById('fault_section').style.display='none';
+    document.getElementById('detail_section').style.display='none';
+    document.getElementById('signout_section').style.display='none';
+    document.getElementById('goodbye_section').style.display='block';
 }
